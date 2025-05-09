@@ -1,0 +1,77 @@
+########################################
+# SkyGiants 配置文件
+########################################
+# PAPI 列表
+# %skygiants_currentMapName% 当前地图名称
+# %skygiants_currentplayers% 当前地图当前玩家人数
+# %skygiants_maxplayers% 当前地图最大人数
+# %skygiants_currentteam% 玩家当前队伍
+# %skygiants_currentMapGameStats% 当前地图状态
+########################################
+default-game:
+  min-players: 2
+  max-players: 8
+  lobby-wait-time: 60
+
+scoreboards:
+  waiting:
+    enabled: true
+    title: "&bSkyGiants"
+    content:
+      - "&a--------------------"
+      - "&a地图: &2%skygiants_currentMapName%"
+      - "&a玩家: &2%skygiants_currentplayers%&f/&2%skygiants_maxplayers%"
+      - "&b--------------------"
+      - "%skygiants_currentMapGameStats%"
+      - "&2--------------------"
+      - "&b@Ampura16"
+  team-selected:
+    enabled: true
+    title: "&bSkyGiants"
+    content:
+      - "&a--------------------"
+      - "&a地图: &2%skygiants_currentMapName%"
+      - "&a玩家: &2%skygiants_currentplayers%&f/&2%skygiants_maxplayers%"
+      - "&a队伍: %skygiants_currentteam%"
+      - "&b--------------------"
+      - "%skygiants_currentMapGameStats%"
+      - "&2--------------------"
+      - "&b@Ampura16"
+  ingame:
+    enabled: true
+    title: "&bSkyGiants"
+    content:
+      - "&a--------------------"
+      - "&a地图: &2%skygiants_currentMapName%"
+      - "&a玩家: &2%skygiants_currentplayers%&f/&2%skygiants_maxplayers%"
+      - "&a队伍: %skygiants_currentteam%"
+      - "&b--------------------"
+      - "%skygiants_currentMapGameStats%"
+      - "&2--------------------"
+      - "&b@Ampura16"
+chat-format:
+  lobby: "{team} {player}: {msg}"
+  ingame: "{team} {player}: {msg}"
+  ingame-all: "[全体] {team} {player}: {msg}"
+
+# 数据库配置
+database:
+  enabled: false
+  host: "localhost"
+  port: 3306
+  name: "SkyGiants"
+  username: "root"
+  password: ""
+
+# 大厅物品
+lobby-items:
+  team-selection:
+    name: "&a选择队伍"
+    material: BED
+  start-game:
+    name: "&a开始游戏"
+    material: DIAMOND
+    permission: "skygiants.startgame"
+  leave-game:
+    name: "&c退出房间"
+    material: SLIME_BALL

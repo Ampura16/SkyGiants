@@ -1,0 +1,14 @@
+name: SkyGiants
+version: 1.0.0
+main: top.brmc.ampura16.skygiants.Main
+author: Ampura16
+description: SkyGiants - 天空巨人 测试版
+api-version: 1.8
+depend:
+  - PlaceholderAPI
+
+commands:
+  skygiants:
+    description: 游戏测试主命令
+    aliases:
+    - sgs
