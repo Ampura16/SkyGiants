@@ -46,6 +46,9 @@ public class Main extends JavaPlugin {
         }
     }
 
+    /**
+     * 插件启动逻辑
+     * */
     private void initializePlugin() {
         // 打印logo
         printLogo();
