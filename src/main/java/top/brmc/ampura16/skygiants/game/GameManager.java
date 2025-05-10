@@ -60,7 +60,7 @@ public class GameManager implements IColorizable {
 
     /**
      * 加载所有游戏 reload子命令最终调用方法
-     * 添加config条目时记得同时更新saveGame方法
+     * 添加config条目时记得同时更新saveGame和saveAllGames方法
      */
     public void loadAllGames() {
         List<String> gameNames = configManager.getAllGameNames();
@@ -96,7 +96,7 @@ public class GameManager implements IColorizable {
                         if (gameConfig.contains("teams." + teamName + ".teamGiantSpawnLocation")) {
                             Location teamGiantSpawnLocation = deserializeLocation(gameConfig.getString("teams." + teamName + ".teamGiantSpawnLocation")); // 从字符串格式加载
                             if (teamGiantSpawnLocation != null) {
-                                game.getTeam(teamName).setTeamSpawnLocation(teamGiantSpawnLocation);
+                                game.getTeam(teamName).setTeamGiantSpawnLocation(teamGiantSpawnLocation);
                             }
                         }
                     }
@@ -125,8 +125,8 @@ public class GameManager implements IColorizable {
                 Team team = entry.getValue();
                 config.set("teams." + teamName + ".color", team.getTeamColor().name());
                 config.set("teams." + teamName + ".maxPlayers", team.getMaxPlayers());
-                config.set("teams." + teamName + ".teamSpawnLocation", serializeLocation(team.getTeamSpawnLocation())); // 使用字符串格式保存
-                config.set("teams." + teamName + ".teamGiantSpawnLocation", serializeLocation(team.getTeamGiantSpawnLocation())); // 使用字符串格式保存
+                config.set("teams." + teamName + ".teamSpawnLocation", serializeLocation(team.getTeamSpawnLocation())); // 保存队伍出生点
+                config.set("teams." + teamName + ".teamGiantSpawnLocation", serializeLocation(team.getTeamGiantSpawnLocation())); // 保存队伍巨人生成位置
             }
         }
 
@@ -155,6 +155,7 @@ public class GameManager implements IColorizable {
                 Team team = entry.getValue();
                 game.saveTeamToConfig(teamName, team.getTeamColor(), team.getMaxPlayers());
                 game.saveTeamSpawnToConfig(teamName, team.getTeamSpawnLocation()); // 确保保存队伍出生点
+                game.saveTeamGiantSpawnToConfig(teamName, team.getTeamGiantSpawnLocation()); // 确保保存队伍巨人生成位置
             }
         }
     }

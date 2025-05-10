@@ -240,22 +240,6 @@ public class Team {
     }
 
     /**
-     * 保存队伍巨人生成位置到配置文件
-     */
-    public boolean saveTeamGiantSpawnToConfig(Location location) {
-        YamlConfiguration config = configManager.getGameConfig(gameName);
-        if (config == null) {
-            return false;
-        }
-
-        // 保存队伍巨人生成位置（以序列化格式）
-        config.set("teams." + teamName + ".teamGiantSpawnLocation", serializeLocation(location));
-
-        // 保存配置文件
-        return configManager.saveGameConfig(gameName, config);
-    }
-
-    /**
      * 序列化 Location 为字符串
      */
     private String serializeLocation(Location location) {
